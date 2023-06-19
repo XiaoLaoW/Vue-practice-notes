@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <!-- 遍历数组（常用）-->
+    <ul v-for="p of persons" :key="p.id">
+      <li>{{p.name}}-{{p.age}}</li>
+      <input type="text">
+    </ul>
+    <button @click="add">添加一个人</button>
+  </div>
+  <script>
+    const vm = new Vue({
+      el: '#root',
+      data: {
+        persons: [
+          { id: '001', name: 'wyx', age: '23' },
+          { id: '002', name: 'wyx2', age: '24' },
+          { id: '003', name: 'wyx3', age: '25' },
+        ],
+      },
+      methods: {
+        add () {
+          const p = { id: '004', name: 'myy', age: '18' }
+          this.persons.unshift(p)
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

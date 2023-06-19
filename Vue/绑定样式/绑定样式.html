@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+  <style>
+    .basic {
+      border: 1px solid black;
+      height: 100px;
+    }
+
+    .normal {
+      background-color: skyblue;
+    }
+
+    .happy {
+      background-color: #d46917;
+    }
+
+    .sad {
+      background-color: #244d5353;
+    }
+
+    .c1 {
+      font-size: larger;
+    }
+
+    .c2 {
+      background-color: red;
+    }
+
+    .c3 {
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<!--
+  绑定样式：
+    1.class样式：
+      写法：class="xxx" xxx可以是字符串、对象、数组
+      字符串写法适用于，类名不确定，需要动态获取
+      对象写法适用于，要绑定多个样式，个数、名字都不确定
+      数组写法适用于，要绑定多个样式，个数、名字都确定，但是不确定用不用
+    2.style样式
+      :style:"{fontSize:xxx}" 其中xxx是动态值
+      :style:"[a,b]" 其中a,b是样式对象
+-->
+
+<body>
+  <div id="root">
+    <!--绑定class样式  字符串写法，适用于：样式类名不确定，需要动态指定-->
+    <div class="basic" :class="mood" @click="changeMood">test</div>
+    <br>
+    <!--绑定class样式  数组写法，适用于：要绑定的样式个数、名字不确定-->
+    <div class="basic" :class="classArr" @click="">test</div>
+    <br>
+    <!--绑定class样式  对象写法，适用于：要绑定的样式个数、名字确定，但要通过动态来控制-->
+    <div class="basic" :class="classObj" @click="">test</div>
+    <br>
+    <!--绑定style 对象样式-->
+    <div class="basic" :style="Obj">test</div>
+    <br>
+    <!--绑定style 数组样式-->
+    <div class="basic" :style="styleArr">test</div>
+  </div>
+  <script>
+    const vm = new Vue({
+      el: '#root',
+      data: {
+        mood: 'normal',
+        classArr: ['c1', 'c2', 'c3'],
+        classObj: {
+          c1: true,
+          c2: false
+        },
+        Obj: {
+          color: 'yellow'
+        },
+        styleArr: [
+          { fontSize: '50px' },
+          { backgroundColor: 'red' }
+        ]
+      },
+      methods: {
+        changeMood () {
+          const arr = ['happy', 'sad', 'normal']
+          const index = Math.floor(Math.random() * 3)
+          this.mood = arr[index]
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

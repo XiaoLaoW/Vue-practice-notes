@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <!-- 遍历数组（常用）-->
+    <ul v-for="p of persons" :key="p.id">
+      <li>{{p.name}}-{{p.age}}</li>
+    </ul>
+
+    <!-- 遍历对象-->
+    <ul v-for="(p,k) of self" :key="p.id">
+      <li>{{p}}-{{k}}</li>
+    </ul>
+
+    <!-- 遍历字符串（极少用）-->
+    <ul v-for="(v,k) of str" :key="k">
+      <li>{{v}}-{{k}}</li>
+    </ul>
+
+    <!-- 遍历指定次数（极少用）-->
+    <ul v-for="(v,k) of 5" :key="k">
+      <li>{{v}}-{{k}}</li>
+    </ul>
+  </div>
+  <script>
+    const vm = new Vue({
+      el: '#root',
+      data: {
+        persons: [
+          { id: '001', name: 'wyx', age: '23' },
+          { id: '002', name: 'wyx2', age: '24' },
+          { id: '003', name: 'wyx3', age: '25' },
+        ],
+        self: { id: 1, name: 'myy', age: '23' },
+        str: 'wyx'
+      }
+    })
+  </script>
+</body>
+
+</html>
