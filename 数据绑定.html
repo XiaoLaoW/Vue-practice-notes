@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  1.单向绑定（v-bind）:数据只能从data流向页面
+  2.双向绑定（v-model）：数据不仅能从data流向页面，还可以从页面流向data
+    备注：1.v-model只能用于表单类元素（输入类）上
+         2.v-model:value 可以简写为 v-model,因为v-model默认收集的就是value值
+-->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数据绑定</title>
+  <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    单向数据绑定：<input type="text" v-bind:value="name">
+    双向数据绑定：<input type="text" v-model="name">
+
+  </div>
+
+  <script type="text/javascript">
+    Vue.config.productionTip = false //组织vue在启东市生成生产提示
+
+    new Vue({
+      el: '#root',
+      data: {
+        name: 'wyx'
+      }
+    })
+  </script>
+</body>
+
+</html>
